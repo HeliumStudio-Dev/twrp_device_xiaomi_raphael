@@ -64,6 +64,7 @@ TW_MAX_BRIGHTNESS := 2047
 TW_THEME := portrait_hdpi
 
 TW_INCLUDE_NTFS_3G := true
+TW_INCLUDE_RESETPROP := true
 
 # TWRP - Debug
 TARGET_USES_LOGD := true
