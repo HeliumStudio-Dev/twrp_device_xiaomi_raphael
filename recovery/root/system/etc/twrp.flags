@@ -12,8 +12,11 @@
 # MetaData
 /metadata        ext4     /dev/block/bootdevice/by-name/metadata                         flags=backup=1;wipeingui
 
+# Internal Storage
+/storage         auto     /data/media/0                                                  flags=display="Internal Storage";usermrf;backup=1;fsflags="bind";removable
+
 # DTBo
-/dtbo            emmc     /dev/block/bootdevice/by-name/dtbo                             flags=display="DTBo (Image)";backup=1;flashimg=1
+/dtbo            emmc     /dev/block/bootdevice/by-name/dtbo                             flags=display="DTBo";backup=1;flashimg=1
 
 # System Partitions
 /system_root     ext4     /dev/block/bootdevice/by-name/system                           flags=display="System";backup=0;wipeingui
@@ -46,7 +49,7 @@
 /persist_image   emmc     /dev/block/bootdevice/by-name/persist                          flags=display="Persist";backup=1;flashimg=1
 
 # VBMeta
-/vbmeta_image    emmc     /dev/block/bootdevice/by-name/vbmeta                           flags=display="VBMeta (Image)";backup=1;flashimg=1
+/vbmeta          emmc     /dev/block/bootdevice/by-name/vbmeta                           flags=display="VBMeta";backup=1;flashimg=1
 
 # Removable Storage
-/usb_otg         auto     /dev/block/sdg1 /dev/block/sdg                                 flags=fsflags=utf8;display="USB Storage";storage;removable
+/usb_otg         auto     /dev/block/sdg1 /dev/block/sdg                                 flags=fsflags=utf8;display="USB-Storage";storage;removable
