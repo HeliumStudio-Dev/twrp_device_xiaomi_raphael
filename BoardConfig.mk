@@ -108,23 +108,24 @@ TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_MAX_BRIGHTNESS := 4095
 TW_DEFAULT_BRIGHTNESS := 1200
-TW_NO_SCREEN_TIMEOUT := true
 TARGET_USES_MKE2FS := true
 TW_EXCLUDE_APEX := true
-TW_EXCLUDE_BASH := true
-TW_EXCLUDE_PYTHON := true
 TW_EXCLUDE_TWRPAPP := true
-TW_BACKUP_EXCLUSIONS := /data/fonts
 TW_FRAMERATE := 60
 TW_DEFAULT_LANGUAGE := zh_CN
 TW_FORCE_KEYMASTER_VER := true
 TW_PREPARE_DATA_MEDIA_EARLY := true
 TW_ENABLE_FS_COMPRESSION := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
+TW_HAS_EDL_MODE := true
 
 # TWRP Debug Flags
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
+
+# Test Flags
+TW_INTERNAL_STORAGE_PATH := "/data/media/0"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "sdcard"
 
 # TWRP 12.1 requirements
 BUILD_BROKEN_DUP_RULES := true
