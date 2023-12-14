@@ -1,13 +1,23 @@
 # Android fstab file.
 # The filesystem that contains the filesystem checker binary (typically /system) cannot
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
-
 #<src>                                                 <mnt_point>               <type>    <mnt_flags and options>                                          <fs_mgr_flags>
-/dev/block/bootdevice/by-name/metadata                 /metadata                 ext4      noatime,nosuid,nodev,discard,data=journal,commit=1               wait,check,formattable
-/dev/block/bootdevice/by-name/userdata                 /data                     ext4      noatime,nosuid,nodev,barrier=1,noauto_da_alloc,inlinecrypt       latemount,wait,check,fileencryption=ice,wrappedkey,keydirectory=/metadata/vold/metadata_encryption,quota,reservedsize=128M
-/dev/block/bootdevice/by-name/userdata                 /data                     f2fs      noatime,nosuid,nodev,discard,fsync_mode=nobarrier,inlinecrypt    latemount,wait,fileencryption=ice,wrappedkey,check,quota,formattable,reservedsize=128M,sysfs_path=/sys/devices/platform/soc/1d84000.ufshc,keydirectory=/metadata/vold/metadata_encryption,checkpoint=fs
 
-# Need to have this entry in here even though the mount point itself is no longer needed.
-# The update_engine code looks for this entry in order to determine the boot device address
-# and fails if it does not find it.
+# Dynamic Partitions
+system                                                 /system                   ext4      ro,barrier=1                                                     wait,logical,first_stage_mount
+system                                                 /system                   erofs     ro                                                               wait,logical,first_stage_mount
+vendor                                                 /vendor                   ext4      ro,barrier=1                                                     wait,logical,first_stage_mount
+vendor                                                 /vendor                   erofs     ro                                                               wait,logical,first_stage_mount
+system_ext                                             /system_ext               ext4      ro,barrier=1                                                     wait,logical,first_stage_mount
+system_ext                                             /system_ext               erofs     ro                                                               wait,logical,first_stage_mount
+product                                                /product                  ext4      ro,barrier=1                                                     wait,logical,first_stage_mount
+product                                                /product                  erofs     ro	                                                            wait,logical,first_stage_mount
+odm                                                    /odm                      ext4      ro,barrier=1                                                     wait,logical,first_stage_mount
+odm                                                    /odm                      erofs     ro                                                               wait,logical,first_stage_mount
+
+# Data
+/dev/block/by-name/metadata                            /metadata                 ext4      noatime,nosuid,nodev,discard,data=journal,commit=1               wait,check,formattable,wrappedkey,data=journal,commit=1,first_stage_mount
+/dev/block/bootdevice/by-name/userdata                 /data                     f2fs      noatime,nosuid,nodev,discard,background_gc=sync,reserve_root=32768,resgid=1065,fsync_mode=strict,inlinecrypt,gc_merge,atgc,checkpoint_merge,compress_algorithm=lz4,compress_extension=apk,compress_extension=apex,compress_extension=so     latemount,wait,check,formattable,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,fscompress,keydirectory=/metadata/vold/metadata_encryption,quota,reservedsize=128M,checkpoint=fs
+
+# Needed for update_engine
 /dev/block/bootdevice/by-name/misc                     /misc                     emmc      defaults                                                         defaults

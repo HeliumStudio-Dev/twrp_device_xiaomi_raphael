@@ -12,16 +12,20 @@
 # MetaData
 /metadata        ext4     /dev/block/bootdevice/by-name/metadata                         flags=backup=1;wipeingui
 
-# Internal Storage
-/storage         auto     /data/media/0                                                  flags=display="Internal Storage";usermrf;backup=1;fsflags="bind";removable
-
 # DTBo
 /dtbo            emmc     /dev/block/bootdevice/by-name/dtbo                             flags=display="DTBo";backup=1;flashimg=1
 
 # System Partitions
-/system_root     ext4     /dev/block/bootdevice/by-name/system                           flags=display="System";backup=0;wipeingui
-/vendor          ext4     /dev/block/bootdevice/by-name/vendor                           flags=display="Vendor";backup=0;wipeingui
-/cust            ext4     /dev/block/bootdevice/by-name/cust                             flags=display="Cust";backup=0;wipeingui
+/system		     ext4     system                                                         flags=display="System";logical
+/system		     erofs    system                                                         flags=display="System";logical
+/vendor		     ext4     vendor                                                         flags=display="Vendor";logical
+/vendor		     erofs    vendor                                                         flags=display="Vendor";logical
+/product	     ext4     product                                                        flags=display="Product";logical
+/product	     erofs    product                                                        flags=display="Product";logical
+/system_ext	     ext4     system_ext                                                     flags=display="System_EXT";logical
+/system_ext	     erofs    system_ext                                                     flags=display="System_EXT";logical
+/odm		     ext4     odm                                                            flags=display="ODM";logical
+/odm		     erofs    odm                                                            flags=display="ODM";logical
 
 # System Partitions (Image)
 /system_image    emmc     /dev/block/bootdevice/by-name/system                           flags=backup=1;flashimg=1
@@ -53,3 +57,6 @@
 
 # Removable Storage
 /usb_otg         auto     /dev/block/sdg1 /dev/block/sdg                                 flags=fsflags=utf8;display="USB-Storage";storage;removable
+
+# System As Root (Needed for non-retrofit convert to retrofit)
+/system_root     ext4     /dev/block/bootdevice/by-name/system                           flags=display="System_Root"
