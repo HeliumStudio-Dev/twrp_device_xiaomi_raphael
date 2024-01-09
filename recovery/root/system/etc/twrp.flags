@@ -12,6 +12,9 @@
 # MetaData
 /metadata        ext4     /dev/block/bootdevice/by-name/metadata                         flags=backup=1;wipeingui
 
+# Internal Storage
+/storage         auto     /data/media/0                                                  flags=display="Internal Storage";usermrf;backup=1;fsflags="bind";removable
+
 # DTBo
 /dtbo            emmc     /dev/block/bootdevice/by-name/dtbo                             flags=display="DTBo";backup=1;flashimg=1
 
