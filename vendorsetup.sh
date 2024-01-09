@@ -18,21 +18,7 @@
 # 	Please maintain this if you use this script or any part of it
 #
 FDEVICE="raphael"
-
-fox_get_target_device() {
-local chkdev=$(echo "$BASH_SOURCE" | grep -w \"$FDEVICE\")
-   if [ -n "$chkdev" ]; then
-      FOX_BUILD_DEVICE="$FDEVICE"
-   else
-      chkdev=$(set | grep BASH_ARGV | grep -w \"$FDEVICE\")
-      [ -n "$chkdev" ] && FOX_BUILD_DEVICE="$FDEVICE"
-   fi
-}
-
-if [ -z "$1" -a -z "$FOX_BUILD_DEVICE" ]; then
-   echo "** WARNING **: Always set FOX_BUILD_DEVICE to the device codename before starting to build for any device!"
-   fox_get_target_device
-fi
+FOX_BUILD_DEVICE="$FDEVICE"
 
 if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
