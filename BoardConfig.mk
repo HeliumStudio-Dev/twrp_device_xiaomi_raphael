@@ -103,6 +103,9 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
 TARGET_USES_LOGD := true
 TWRP_INCLUDE_LOGCAT := true
 
+# TWRP - Vibrator
+TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+
 # Allow building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 BUILD_BROKEN_DUP_RULES := true
