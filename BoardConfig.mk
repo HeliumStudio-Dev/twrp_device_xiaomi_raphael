@@ -51,3 +51,12 @@ BOARD_ROOT_EXTRA_FOLDERS := bluetooth dsp firmware persist
 
 # Extra
 BOARD_SUPPRESS_SECURE_ERASE := true
+
+# Recovery
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+
+# TWRP
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
+TW_MAX_BRIGHTNESS := 2047
+TW_THEME := portrait_hdpi
