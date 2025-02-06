@@ -63,6 +63,8 @@ TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_MAX_BRIGHTNESS := 2047
 TW_THEME := portrait_hdpi
 
+TW_INCLUDE_NTFS_3G := true
+
 # TWRP - Debug
 TARGET_USES_LOGD := true
 TWRP_INCLUDE_LOGCAT := true
