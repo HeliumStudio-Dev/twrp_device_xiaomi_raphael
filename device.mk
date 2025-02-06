@@ -4,6 +4,9 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Assert
+TARGET_OTA_ASSERT_DEVICE := raphael,raphaelin
+
 # Crypto
 PRODUCT_PACKAGES += \
     qcom_decrypt \
