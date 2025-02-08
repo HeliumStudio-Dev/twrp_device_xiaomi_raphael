@@ -26,3 +26,6 @@ TARGET_USES_UEFI := true
 
 # Platform
 TARGET_BOARD_PLATFORM := msmnile
+
+# Kernel
+BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 earlycon=msm_geni_serial,0xa90000 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.usbcontroller=a600000.dwc3 service_locator.enable=1 lpm_levels.sleep_disabled=1 loop.max_part=7 kpti=off
